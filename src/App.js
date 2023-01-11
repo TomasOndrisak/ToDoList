@@ -4,37 +4,53 @@ import React, { useState } from "react";
 import ToDo from "./components/ToDo";
 
 function App() {
-
-  const [toDoText, setText] = useState('');
+  const [toDoText, setText] = useState("");
   const [toDoArray, addItem] = useState([]);
-  let i = 0;
+  const [todosCount, setCount] = useState(0);
 
-  function onTextChange(event){
-    const {value} = event.target;
+  function countActualTodos(){
+    setCount(toDoArray.length+1);
+    console.log(toDoArray.length);
+  }
+  function onTextChange(event) {
+    const { value } = event.target;
+
     setText(value);
+
   }
 
-  function pushToArray(){
-    addItem(previousArr => {
-      return [...previousArr, toDoText];
-    })
-    setText('');
+  function pushToArray() {
+    addItem((previousArr) => {
+      return ([...previousArr, toDoText]);
+    });
+    countActualTodos();
 
+    setText("");
   }
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div className="to-do-container">
-        {toDoArray.map((item) => {
-          return (<div><ToDo key={i++} text={item}/></div>)
-        })}
-        {toDoArray.length === 0 ? <h1>Add something to do.</h1> : null}
+        <div className="toDo-container">
+        <p onChange={countActualTodos}>{todosCount > 0 ? <span>Todos done: 0/{todosCount}</span> : null}</p>
+          {toDoArray.map((item, index) => {
+            return (
+                <ToDo key={index} text={item} />
+            );
+          })}
+          {toDoArray.length === 0 ? <h1>Add something to do.</h1> : null}
+          <input
+            className="toDo-input"
+            onChange={onTextChange}
+            name="toDo"
+            placeholder="Add new todo..."
+            value={toDoText}
+          />
         </div>
-       <input onChange={onTextChange} name='toDo' placeholder="add new todo" value={toDoText}></input>
-        <button onClick={pushToArray}>Submit</button>
-
+        <button className="add-button" onClick={pushToArray}>
+          <span>Add</span>
+        </button>
       </header>
     </div>
   );
