@@ -1,0 +1,13 @@
+.to-do-text {
+  max-width:750px;
+  max-height: 64px;
+  overflow: hidden;
+  font-size: 32px;
+  
+}
+
+.to-do-checkbox {
+    float:right;
+    margin-top: 32px;
+}
+
