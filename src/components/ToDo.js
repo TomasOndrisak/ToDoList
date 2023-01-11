@@ -6,10 +6,11 @@ function ToDo(props) {
   function switchValue() {
     setValue((value = !value));
   }
+
   const strikeThrough = { textDecoration: "line-through" };
   return (
     <div>
-    <hr/>
+      <hr />
       <input
         className="to-do-checkbox"
         onChange={switchValue}
@@ -18,7 +19,9 @@ function ToDo(props) {
       <p className="to-do-text" style={value ? strikeThrough : null}>
         {props.text}
       </p>
-      <hr/>
+      <button onClick={() => props.deleteTask(props.id)}>DELETE</button>
+      <button>EDIT</button>
+      <hr />
     </div>
   );
 }
