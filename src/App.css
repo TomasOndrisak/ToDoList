@@ -65,6 +65,20 @@
   max-width: 800px;
 }
 
+.add-button-empty{
+  background-color: #5f6161;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 15px 32px;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+  max-width: 800px;
+}
+
 .toDo-input {
   background: #fbfbfb;
   border: 2px solid transparent;

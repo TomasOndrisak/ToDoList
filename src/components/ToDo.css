@@ -12,3 +12,15 @@
   height: 40px;
   accent-color: #61dafb;
 }
+
+.editing-input{
+  background: #fbfbfb;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  margin-top: 16px;
+  text-align: center;
+  font-size: 16px;
+  height: 36px;
+  width: 600px;
+  width: 100%;
+}

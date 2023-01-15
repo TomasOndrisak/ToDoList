@@ -7,32 +7,54 @@ function App() {
   const [toDoText, setText] = useState("");
   const [toDoList, addItem] = useState([]);
   const [todosCount, setCount] = useState(0);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  function handleIsDisabled(event) {
+    if (event.target.value === "") {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
+  }
 
   function countActualTodos() {
-    setCount(toDoList.length + 1);
-    console.log(toDoList.length);
+    const listLenght = toDoList.length;
+    setCount(listLenght);
   }
+
   function onTextChange(event) {
     const { value } = event.target;
-
+    handleIsDisabled(event);
     setText(value);
   }
 
-  function pushToArray() {
+  function pushToArray(event) {
     const newTask = { id: Math.floor(Math.random() * 1000), text: toDoText };
 
     addItem((previousArr) => {
       return [...previousArr, newTask];
     });
-    countActualTodos();
-    console.log(toDoList);
 
+    countActualTodos();
     setText("");
+    setIsDisabled(event);
+
   }
 
-  function deleteTask(e) {
-    addItem(toDoList.filter((item) => item.id !== e));
+  function deleteItem(id) {
+    addItem(toDoList.filter((item) => item.id !== id));
     console.log(toDoList);
+    countActualTodos();
+  }
+
+  function editItem(id, editedItem) {
+    const editedItemList = toDoList.map((item) => {
+      if (id === item.id) {
+        return { ...item, text: editedItem };
+      }
+      return item;
+    });
+    addItem(editedItemList);
   }
 
   return (
@@ -49,7 +71,8 @@ function App() {
                 key={item.id}
                 id={item.id}
                 text={item.text}
-                deleteTask={deleteTask}
+                deleteItem={deleteItem}
+                editItem={editItem}
               />
             );
           })}
@@ -62,7 +85,10 @@ function App() {
             value={toDoText}
           />
         </div>
-        <button className="add-button" onClick={pushToArray}>
+        <button
+          className={isDisabled ? "add-button-empty" : "add-button"}
+          onClick={isDisabled ? null : pushToArray}
+        >
           <span>Add</span>
         </button>
       </header>
