@@ -24,10 +24,25 @@
   width: 100%;
 }
 
-.edit-button, .delete-button, .save-button, .cancel-button {
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button {
   font-size: 20px;
   margin: 0px 5px;
   border: 1px;
   border-radius: 3px;
+  color: #fff;
 }
 
+.delete-button, .cancel-button {
+  background-color: #dc0000;
+}
+
+.edit-button {
+  background-color: #ff7000;
+}
+
+.save-button {
+  background-color: #03C988;
+}
