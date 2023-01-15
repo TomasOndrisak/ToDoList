@@ -15,46 +15,67 @@ function ToDo(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.editItem(props.id, newName);
-    setNewName("");
-    setEditing(false);
+    if (newName.length > 0) {
+      props.editItem(props.id, newName);
+      setNewName("");
+      setEditing(false);
+    } 
+    else {
+      alert('The to-do text cannot be empty');
+    }
   }
 
   const strikeThrough = { textDecoration: "line-through" };
- 
+
   return (
     <div>
       <hr />
+      {isEditing ? null : (
         <input
           className="to-do-checkbox"
           onChange={switchValue}
           type="checkbox"
         />
-        {isEditing ? (
-          <input
-            id={props.id}
-            className="editing-input"
-            type="text"
-            value={newName}
-            placeholder={props.text}
-            onChange={handleChange}
-          />
-        ) : (
-          <p className="to-do-text" style={value ? strikeThrough : null}>
-            {props.text}
-          </p>
-        )}
-        
-        {isEditing ? (
-          <div>
-            <button onClick={() => setEditing(false)}> CANCEL</button>
-            <button onClick={handleSubmit}  className="btn btn__primary todo-edit">
-              Save
-            </button>
-          </div>
-        ) : <div><button onClick={() => props.deleteItem(props.id)}>DELETE</button>
-        <button onClick={() => setEditing(true)}>EDIT</button></div>}
+      )}
+      {isEditing ? (
+        <div>
+        <input
+          id={props.id}
+          className="editing-input"
+          type="text"
+          value={newName}
+          placeholder={props.text}
+          onChange={handleChange}
+        />
+        </div>
+      ) : (
+        <p className="to-do-text" style={value ? strikeThrough : null}>
+          {props.text}
+        </p>
+      )}
       <hr />
+      {isEditing ? (
+        <div>
+          <button onClick={() => setEditing(false)} className="cancel-button">
+            Cancel
+          </button>
+          <button onClick={handleSubmit} className="save-button">
+            Save
+          </button>
+        </div>
+      ) : (
+        <div>
+          <button
+            onClick={() => props.deleteItem(props.id)}
+            className="delete-button"
+          >
+            Delete
+          </button>
+          <button onClick={() => setEditing(true)} className="edit-button">
+            Edit
+          </button>
+        </div>
+      )}
     </div>
   );
 }
