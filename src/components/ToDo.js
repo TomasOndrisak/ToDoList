@@ -8,7 +8,7 @@ function ToDo(props) {
 
   function switchValue() {
     setValue((!value));
-    // props.isDone(props.id, value)     
+    props.isDone(props.id, value)     
   }
 
   function handleChange(e) {
@@ -36,6 +36,7 @@ function ToDo(props) {
           className="to-do-checkbox"
           onChange={switchValue}
           type="checkbox"
+          checked={value ? 1 : 0}
         />
       )}
       {isEditing ? (

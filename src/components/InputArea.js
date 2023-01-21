@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import "./InputArea.css";
 
 function InputArea(props) {
 
   const [toDoText, setText] = useState("");
   const toDoTextLenght = toDoText.trim().length;
-  
+
   function handleChange(e) {
     const newValue = e.target.value;
     setText(newValue);
@@ -17,6 +18,7 @@ function InputArea(props) {
         onChange={handleChange}
         name="toDo"
         placeholder="Add new todo..."
+        autocomplete="off"
         value={toDoText}
       />
       <button

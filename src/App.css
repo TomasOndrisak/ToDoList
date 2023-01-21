@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  height: 100vh;
 }
 
 .App-logo {
@@ -14,8 +16,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,50 +37,3 @@
   }
 }
 
-.toDo-container {
-  width: 100%;
-  height: auto;
-  min-height: 200px;
-  max-width: 800px;
-  min-width: 250px;
-  background: #2c3639;
-  border-radius: 20px;
-  box-shadow: 4px 3px 7px 2px #00000040;
-  padding: 1rem;
-  box-sizing: border-box;
-  white-space: nowrap;
-}
-
-.add-button {
-  background-color: #61dafb;
-  border: none;
-  border-radius: 10px;
-  color: black;
-  font-weight: bold;
-  margin-top: 10px;
-  padding: 15px 32px;
-  display: inline-block;
-  font-size: 16px;
-}
-
-.add-button-empty {
-  background-color: #5f6161;
-  border: none;
-  border-radius: 10px;
-  color: black;
-  font-weight: bold;
-  padding: 15px 32px;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.toDo-input {
-  background: #fbfbfb;
-  border: 2px solid transparent;
-  border-radius: 6px;
-  margin-top: 16px;
-  text-align: center;
-  font-size: 16px;
-  height: 36px;
-  width: 100%;
-}

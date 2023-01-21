@@ -1,14 +1,15 @@
 import React from "react";
 import ToDo from "./ToDo";
-
+import "./ToDoContainer.css";
 function ToDoContainer(props) {
+
 
   return (
     <div className="toDo-container">
       <p>
-        {props.toDoListLenght > 0 ? (
-          <span>
-            Todos done: 0/{props.toDoListLenght}
+        {props.toDoList.length > 0 ? (
+          <span className="todos-count">
+            Todos done: {props.todosDone}/{props.toDoList.length}
           </span>
         ) : null}
       </p>
@@ -21,11 +22,11 @@ function ToDoContainer(props) {
             text={item.text}
             deleteItem={props.deleteItem}
             editItem={props.editItem}
-            // isDone={isDone}
+            isDone={props.isDone}
           />
         );
       })}
-      {props.toDoListLenght === 0 ? <h1>Add something to do.</h1> : null}
+      {props.toDoList.length === 0 ? <h1>Add something to do.</h1> : null}
     </div>
   );
 }

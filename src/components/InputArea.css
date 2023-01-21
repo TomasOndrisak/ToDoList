@@ -1,0 +1,34 @@
+.add-button {
+    background-color: #61dafb;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 15px 32px;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+  .add-button-empty {
+    background-color: #5f6161;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    padding: 15px 32px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .toDo-input {
+    background: #fbfbfb;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    margin-top: 16px;
+    text-align: center;
+    font-size: 16px;
+    height: 36px;
+    width: 100%;
+  }
+  

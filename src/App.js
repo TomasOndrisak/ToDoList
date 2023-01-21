@@ -6,6 +6,7 @@ import "./App.css";
 
 function App() {
   const [toDoList, addItem] = useState([]);
+  const todosDone = toDoList.filter((item) => item.done === true).length;
 
   function pushToArray(text) {
     const newTask = {
@@ -33,15 +34,23 @@ function App() {
     addItem(editedItemList);
   }
 
+  function isDone(itemId, isChecked){
+    const index = toDoList.map(item => item.id).indexOf(itemId);
+    let update = [...toDoList];
+    update[index].done = !isChecked;
+    addItem(update);
+    
+  }
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <ToDoContainer
-          toDoListLenght={toDoList.length}
           toDoList={toDoList}
           deleteItem={deleteItem}
           editItem={editItem}
+          isDone={isDone}
+          todosDone={todosDone}
         />
         <InputArea addItem={pushToArray} />
       </header>
