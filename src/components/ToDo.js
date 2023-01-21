@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./ToDo.css";
 function ToDo(props) {
-  let [value, setValue] = useState(false);
+  const [value, setValue] = useState(false);
   const [isEditing, setEditing] = useState(false);
   const [newName, setNewName] = useState("");
+  const [isClicked, setClicked] = useState("");
 
   function switchValue() {
-    setValue((value = !value));
+    setValue((!value));
+    // props.isDone(props.id, value)     
   }
 
   function handleChange(e) {
@@ -19,9 +21,8 @@ function ToDo(props) {
       props.editItem(props.id, newName);
       setNewName("");
       setEditing(false);
-    } 
-    else {
-      alert('The to-do text cannot be empty');
+    } else {
+      alert("The to-do text cannot be empty");
     }
   }
 
@@ -39,17 +40,21 @@ function ToDo(props) {
       )}
       {isEditing ? (
         <div>
-        <input
-          id={props.id}
-          className="editing-input"
-          type="text"
-          value={newName}
-          placeholder={props.text}
-          onChange={handleChange}
-        />
+          <input
+            id={props.id}
+            className="editing-input"
+            type="text"
+            value={newName}
+            placeholder={props.text}
+            onChange={handleChange}
+          />
         </div>
       ) : (
-        <p className="to-do-text" style={value ? strikeThrough : null}>
+        <p
+          className={isClicked ? "to-do-text-clicked" : "to-do-text"}
+          onClick={() => setClicked(!isClicked)}
+          style={value ? strikeThrough : null}
+        >
           {props.text}
         </p>
       )}

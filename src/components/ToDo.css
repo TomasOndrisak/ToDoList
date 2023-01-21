@@ -3,7 +3,16 @@
   overflow: hidden;
   white-space: none;
   font-size: 32px;
-  margin: 0;
+  margin: 0px 70px 0px 50px;
+}
+
+.to-do-text-clicked {
+  margin: 0px 70px 0px 50px;
+  word-wrap: break-word;
+  text-overflow: unset;
+  overflow: visible;
+  white-space: pre-line;
+  font-size: 32px;
 }
 .to-do-checkbox {
   float: right;
@@ -35,7 +44,8 @@
   color: #fff;
 }
 
-.delete-button, .cancel-button {
+.delete-button,
+.cancel-button {
   background-color: #dc0000;
 }
 
@@ -44,5 +54,5 @@
 }
 
 .save-button {
-  background-color: #03C988;
+  background-color: #03c988;
 }
